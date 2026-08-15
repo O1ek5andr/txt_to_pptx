@@ -156,7 +156,7 @@ async def handle_text_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         await update.message.reply_document(
             document=pptx_stream,
             filename=filename,
-            caption="Твоя презентація готова!"
+            caption=""
         )
     except Exception as e:
         logging.error(f"Помилка створення презентації: {e}")
@@ -179,7 +179,7 @@ async def handle_document_message(update: Update, context: ContextTypes.DEFAULT_
         await update.message.reply_document(
             document=pptx_stream,
             filename=filename,
-            caption="Твоя презентація готова!"
+            caption=""
         )
     except Exception as e:
         logging.error(f"Помилка обробки файлу: {e}")
