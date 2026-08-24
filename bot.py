@@ -11,7 +11,13 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.dml.color import RGBColor
 
 # Завантажуємо змінні оточення з .env файлу
-load_dotenv()
+# Абсолютний шлях до .env поруч із bot.py
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ENV_PATH = os.path.join(BASE_DIR, ".env")
+
+load_dotenv(dotenv_path=ENV_PATH)
+# Перевірка
+print("TOKEN:", os.getenv("BOT_TOKEN"))
 
 # Налаштування логування
 logging.basicConfig(
