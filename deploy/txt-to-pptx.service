@@ -1,0 +1,22 @@
+[Unit]
+Description=Text to PowerPoint Telegram bot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=botuser
+Group=botuser
+WorkingDirectory=/opt/bots/txt_to_pptx
+EnvironmentFile=/etc/txt-to-pptx.env
+ExecStart=/opt/bots/txt_to_pptx/.venv/bin/python /opt/bots/txt_to_pptx/bot.py
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/bots/txt_to_pptx
+
+[Install]
+WantedBy=multi-user.target

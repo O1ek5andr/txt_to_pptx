@@ -16,8 +16,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ENV_PATH = os.path.join(BASE_DIR, ".env")
 
 load_dotenv(dotenv_path=ENV_PATH)
-# Перевірка
-print("TOKEN:", os.getenv("BOT_TOKEN"))
 
 # Налаштування логування
 logging.basicConfig(
@@ -195,7 +193,7 @@ if __name__ == "__main__":
     BOT_TOKEN = os.getenv("BOT_TOKEN")
     
     if not BOT_TOKEN:
-        raise ValueError("Токен бота не знайдено! Переконайся, що файл .env існує та містить BOT_TOKEN.")
+        raise ValueError("Токен бота не знайдено! Встанови BOT_TOKEN у середовищі або у файлі .env.")
 
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
@@ -203,5 +201,5 @@ if __name__ == "__main__":
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text_message))
     app.add_handler(MessageHandler(filters.Document.ALL, handle_document_message))
 
-    print("Бот запущений локально...")
+    logging.info("Бот запущений.")
     app.run_polling()
